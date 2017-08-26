@@ -25,7 +25,10 @@ object ConsumerRun extends App {
       _ <- consume.commitSync()
       consumerRecords <- consume.poll(5.seconds)
       list <- record.getRecords(consumerRecords, topic)
-    } yield list
+      listTDS2 = list.map(record.getKeyValue)
+                     .map(_.flatMap(testData.apply))
+                     .map(_.flatMap(testData.subtract2))
+    } yield listTDS2
   }
 
   val topic = "test"
