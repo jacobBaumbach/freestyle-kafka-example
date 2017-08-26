@@ -1,5 +1,5 @@
 package freestyleKafkaExample
-package producers
+package algebras
 
 import types._
 
