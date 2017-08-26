@@ -18,11 +18,6 @@ import org.apache.kafka.clients.consumer.{ConsumerRecords, ConsumerRecord}
   def getRecords(crs: ConsumerRecords[String, Long], topic: String): FS[Iterable[ConsumerRecord[String, Long]]]
   def getKey(cr: ConsumerRecord[String, Long]): FS[String]
   def getValue(cr: ConsumerRecord[String, Long]): FS[Long]
-  def getKeyValues(crs: Iterable[ConsumerRecords[String, Long]]): FS[(String, Long)] =
-    crs.flatMap{cr =>
-      for{
-        k <- getKey(cr)
-        v <- getValue(cr)
-      } yield (k, v)
-    }
+  def getKeyValue(cr: ConsumerRecord[String, Long]): FS[(String, Long)] =
+        (getKey(cr) |@| getValue(cr)).tupled      
 }
