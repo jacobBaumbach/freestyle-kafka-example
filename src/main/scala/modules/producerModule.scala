@@ -7,7 +7,7 @@ import algebras.ProducerExample._
 import freestyle._
 
 @module trait ProducerModule {
-  val testData: TestDataF
+  val bftd: BFTD
   val record: ProducerRecordExample
   val produce: kafkaProducerProvider.Producer
 }
