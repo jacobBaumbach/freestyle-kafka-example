@@ -18,5 +18,5 @@ libraryDependencies ++= Seq(
 
 addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M9" cross CrossVersion.full)
 
-scalacOptions += "-Xplugin-require:macroparadise",
+scalacOptions += "-Xplugin-require:macroparadise"
 scalacOptions in (Compile, console) := Seq()
